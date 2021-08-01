@@ -6,9 +6,9 @@ source ../script-helper.sh
 assert_docker_container nginx
 
 mkdir -p /data/app/nginx/{www,conf,logs}
-cp install-nginx/index.html  /data/app/nginx/www
-cp install-nginx/favicon.ico /data/app/nginx/www
-cp install-nginx/index.conf  /data/app/nginx/conf
+cp nginx/index.html  /data/app/nginx/www
+cp nginx/favicon.ico /data/app/nginx/www
+cp nginx/index.conf  /data/app/nginx/conf
 
 docker rm -f mynginx
 docker build -t mynginx ./nginx
