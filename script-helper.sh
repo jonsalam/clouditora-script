@@ -1,30 +1,32 @@
 #!/bin/bash
 
 RED=$(printf '\033[31m')
+GREEN=$(printf '\033[32m')
 YELLOW=$(printf '\033[33m')
 RESET=$(printf '\033[m')
 echo_error() {
-  echo "${RED}error: $*${RESET}" >&2
+  echo "${RED}$*${RESET}" >&2
 }
 echo_warn() {
-  echo "${YELLOW}warn: $*${RESET}" >&2
+  echo "${YELLOW}$*${RESET}" >&2
 }
 echo_info() {
-  echo "$*" >&2
+  echo "${GREEN}$*${RESET}" >&2
 }
 
+# 检查命令是否存在
+# 0:存在(true), 1:不存在(false)
 function check_command_exist {
 	if command -v "$1" >/dev/null 2>&1; then
 		echo_warn "$1 existed"
-		return 1
+		return 0
+	else
+	  return 1
 	fi
 }
 
 function assert_command_exist {
-  check_command_exist "$1"
-	if [[ $? -eq 1 ]]; then
-		exit 1
-	fi
+  check_command_exist "$1" && exit 1
 }
 
 function assert_docker_container {
