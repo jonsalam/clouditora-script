@@ -13,7 +13,7 @@ function install_plugin {
 
 yum install -y zsh fontconfig git
 chsh -s /bin/zsh
-echo 'yes' |sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
+echo 'yes' |sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # plugins
 install_plugin https://github.com/zsh-users/zsh-autosuggestions.git
@@ -22,9 +22,9 @@ install_plugin https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 # fonts
 mkdir -p /user/share/fonts
-curl https://gitee.com/mirrors/Powerline/raw/master/font/PowerlineSymbols.otf -o PowerlineSymbols.otf
+curl https://raw.githubusercontent.com/powerline/powerline/develop/font/PowerlineSymbols.otf -o PowerlineSymbols.otf
 mv PowerlineSymbols.otf /user/share/fonts/
-curl https://gitee.com/mirrors/Powerline/raw/master/font/10-powerline-symbols.conf -o 10-powerline-symbols.conf
+curl https://raw.githubusercontent.com/powerline/powerline/develop/font/10-powerline-symbols.conf -o 10-powerline-symbols.conf
 mkdir -p /etc/fonts/conf.d
 mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 fc-cache -vf /usr/share/fonts
